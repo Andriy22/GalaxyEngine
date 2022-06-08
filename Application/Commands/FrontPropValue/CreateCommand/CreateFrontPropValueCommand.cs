@@ -9,7 +9,8 @@ namespace Application.Commands.FrontPropValue.CreateCommand
 {
     public class CreateFrontPropValueCommand : IRequest<Guid>
     {
-        public Guid BaseComponentId { get; set; }
-        public Guid PageId { get; set; }
+        public Guid ComponentId { get; set; }
+        public Guid PropId { get; set; }
+        public string Value { get; set; }
     }
 }
