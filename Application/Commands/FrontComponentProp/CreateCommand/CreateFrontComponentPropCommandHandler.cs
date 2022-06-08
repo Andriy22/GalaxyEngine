@@ -1,9 +1,6 @@
 ﻿using Application.Interfaces;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,6 +21,7 @@ namespace Application.Commands.FrontComponentProp.CreateCommand
                 BaseComponentId = request.BaseComponentId,
                 Id = Guid.NewGuid(),
                 Title = request.Title,
+                CanBeHidden = request.CanBeHidden,
             };
 
             _dbContext.FrontComponentProps.Add(entity);
@@ -31,6 +29,6 @@ namespace Application.Commands.FrontComponentProp.CreateCommand
 
             return entity.Id;
         }
-        
+
     }
 }

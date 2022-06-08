@@ -3,9 +3,6 @@ using Application.Queries.FrontPropValue;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Queries.FrontComponent.GetFrontComponents
 {
@@ -16,7 +13,7 @@ namespace Application.Queries.FrontComponent.GetFrontComponents
         public int DisplayIndex { get; set; }
         public bool IsActive { get; set; }
         public bool IsHidden { get; set; }
-        public List<GetFrontPropValueDto> Props { get; set; }
+        public List<GetFrontPropValueListDto> Props { get; set; }
 
         public void Mapping(Profile profile)
         {
@@ -29,7 +26,7 @@ namespace Application.Queries.FrontComponent.GetFrontComponents
                   opt => opt.MapFrom(front => front.IsHidden))
               .ForMember(option => option.DisplayIndex,
                   opt => opt.MapFrom(front => front.DisplayIndex));
-              
+
         }
     }
 }

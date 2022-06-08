@@ -16,8 +16,6 @@ namespace Domain
         public bool IsHidden { get; set; }
         public Guid ComponentId { get; set; }
         public FrontComponent Component { get; set; }
-        [ForeignKey("Prop")]
-        public Guid PropId { get; set; }
         public FrontComponentProp Prop { get; set; }
     }
 }

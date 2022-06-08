@@ -1,4 +1,6 @@
 ﻿using Application.Common.Behaviors;
+using Application.Interfaces;
+using Application.Services;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,9 @@ namespace Application
                 typeof(ValidationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>),
                 typeof(LoggingBehavior<,>));
+
+            services.AddScoped<IFrontendService, FrontendService>();
+
             return services;
         }
     }

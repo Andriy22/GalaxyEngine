@@ -1,9 +1,9 @@
-﻿using Application.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Interfaces;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,11 +19,19 @@ namespace Application.Commands.FrontPropValue.CreateCommand
         public async Task<Guid> Handle(CreateFrontPropValueCommand request,
             CancellationToken cancellationToken)
         {
+
+            var prop = await _dbContext.FrontComponentProps.FirstOrDefaultAsync(x => x.Id == request.PropId, cancellationToken);
+
+            if (prop == null)
+            {
+                throw new NotFoundException("CreatePropValue prop not found", request.PropId);
+            }
+
             var entity = new Domain.FrontPropValue
             {
                 ComponentId = request.ComponentId,
-                PropId = request.PropId,
-                Value = request.Value 
+                Prop = prop,
+                Value = request.Value
             };
 
             _dbContext.FrontPropValues.Add(entity);
@@ -32,5 +40,5 @@ namespace Application.Commands.FrontPropValue.CreateCommand
             return entity.Id;
         }
     }
-   
+
 }
