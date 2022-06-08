@@ -3,10 +3,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +22,7 @@ namespace Application.Queries.FrontComponentProp
         {
             return new GetFrontComponentPropListVm
             {
-                Props = await _dbContext.FrontComponentProps.Where(x=>x.BaseComponentId == request.BaseComponentId)
+                Props = await _dbContext.FrontComponentProps.Where(x => x.BaseComponentId == request.BaseComponentId)
                                                          .ProjectTo<GetFrontComponentPropListDto>(_mapper.ConfigurationProvider)
                                                          .ToListAsync(cancellationToken)
             };

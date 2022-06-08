@@ -1,9 +1,6 @@
 ﻿using Application.Interfaces;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,7 +20,7 @@ namespace Application.Commands.FrontPropValue.CreateCommand
             {
                 ComponentId = request.ComponentId,
                 PropId = request.PropId,
-                Value = request.Value 
+                Value = request.Value
             };
 
             _dbContext.FrontPropValues.Add(entity);
@@ -32,5 +29,5 @@ namespace Application.Commands.FrontPropValue.CreateCommand
             return entity.Id;
         }
     }
-   
+
 }

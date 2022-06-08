@@ -3,10 +3,6 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -26,7 +22,7 @@ namespace Application.Queries.FrontComponent.GetFrontComponents
             var components = await _dbContext.FrontComponents.Include(x => x.BaseComponent)
                                                          .ProjectTo<GetFrontComponentListDto>(_mapper.ConfigurationProvider)
                                                          .ToListAsync(cancellationToken);
-            
+
 
 
             return new GetFrontComponentListVm

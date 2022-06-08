@@ -2,15 +2,13 @@
 using Application.Interfaces;
 using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Commands.FrontBaseComponent.CreateCommand
 {
-    public class CreateFrontBaseComponentCommandHandler :  IRequestHandler<CreateFrontBaseComponentCommand, Guid>
+    public class CreateFrontBaseComponentCommandHandler : IRequestHandler<CreateFrontBaseComponentCommand, Guid>
     {
 
         private readonly IDBContext _dbContext;
@@ -21,7 +19,7 @@ namespace Application.Commands.FrontBaseComponent.CreateCommand
         public async Task<Guid> Handle(CreateFrontBaseComponentCommand request,
             CancellationToken cancellationToken)
         {
-            if (_dbContext.FrontBaseComponents.FirstOrDefault(x=>x.Name.ToLower() == 
+            if (_dbContext.FrontBaseComponents.FirstOrDefault(x => x.Name.ToLower() ==
                                                               request.Name.ToLower()) != null)
             {
                 throw new AlreadyExistsException(request.Name);

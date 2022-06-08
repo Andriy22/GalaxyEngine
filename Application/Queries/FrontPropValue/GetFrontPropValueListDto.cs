@@ -1,14 +1,10 @@
 ﻿using Application.Common.Mappings;
 using AutoMapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Queries.FrontPropValue
 {
-    public class GetFrontPropValueDto : IMapWith<Domain.FrontPropValue>
+    public class GetFrontPropValueListDto : IMapWith<Domain.FrontPropValue>
     {
         public Guid Id { get; set; }
         public string Value { get; set; }
@@ -19,7 +15,7 @@ namespace Application.Queries.FrontPropValue
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Domain.FrontPropValue, GetFrontPropValueDto>()
+            profile.CreateMap<Domain.FrontPropValue, GetFrontPropValueListDto>()
               .ForMember(option => option.Id,
                   opt => opt.MapFrom(front => front.Id))
               .ForMember(option => option.Value,
