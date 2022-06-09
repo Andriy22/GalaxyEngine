@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Models;
+using Application.Models.FrontModels.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -20,6 +21,67 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> CreatePage(CreateFrontPageDto model)
         {
             return Ok(await _frontendService.CreatePage(model));
+        }
+
+        [HttpPost("create-base-component")]
+        public async Task<IActionResult> CreateBaseComponent(CreateFrontBaseComponentDto model)
+        {
+            return Ok(await _frontendService.CreateBaseComponent(model));
+        }
+
+        [HttpPost("add-prop-to-component")]
+        public async Task<IActionResult> AddPropToBaseComponent(CreateFrontComponentPropDto model)
+        {
+            return Ok(await _frontendService.AddPropToComponent(model));
+        }
+
+        [HttpPost("create-component")]
+        public async Task<IActionResult> CreateComponent(CreateFrontComponentDto model)
+        {
+            return Ok(await _frontendService.CreateComponent(model));
+        }
+
+        [HttpPost("update-prop-value")]
+        public IActionResult UpdatePropValue(UpdateFrontPropValueDto model)
+        {
+            _frontendService.UpdateValueToProp(model);
+            return Ok();
+        }
+
+        [HttpPost("get-pages")]
+        public async Task<IActionResult> GetPages()
+        {
+            return Ok((await _frontendService.GetFrontPages()).Pages);
+        }
+
+        [HttpPost("get-base-components")]
+        public async Task<IActionResult> GetBaseComponents()
+        {
+            return Ok(await _frontendService.GetBaseComponents());
+        }
+
+        [HttpPost("get-components-type-with-props")]
+        public async Task<IActionResult> GetComponentsTypeWithProps(GetFrontComponentListDto model)
+        {
+            return Ok(await _frontendService.GetComponentsTypeWithProps(model));
+        }
+
+        [HttpPost("get-components")]
+        public async Task<IActionResult> GetComponents(GetFrontComponentListDto model)
+        {
+            return Ok(await _frontendService.GetComponentsTypeWithProps(model));
+        }
+
+        [HttpPost("get-base-component-props")]
+        public async Task<IActionResult> GetBaseComponentProps(GetFrontComponentPropsDto model)
+        {
+            return Ok(await _frontendService.GetFrontComponentPropList(model));
+        }
+
+        [HttpPost("get-component-prop-values")]
+        public async Task<IActionResult> GetComponentPropValues(GetFrontPropValuesDto model)
+        {
+            return Ok(await _frontendService.GetComponentPropValues(model));
         }
     }
 }

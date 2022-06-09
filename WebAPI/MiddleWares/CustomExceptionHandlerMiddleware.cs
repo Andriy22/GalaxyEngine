@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System;
 using Application.Common.Exceptions;
+using Serilog;
 
 namespace WebAPI.MiddleWares
 {
@@ -53,6 +54,8 @@ namespace WebAPI.MiddleWares
             {
                 result = JsonSerializer.Serialize(new { error = exception.Message });
             }
+
+            Log.Error(exception.StackTrace);
 
             return context.Response.WriteAsync(result);
         }

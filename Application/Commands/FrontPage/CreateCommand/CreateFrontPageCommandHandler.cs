@@ -28,6 +28,7 @@ namespace Application.Commands.FrontPage.CreateCommand
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Route = request.Route,
+                IsDeleted = false,
             };
 
             _dbContext.FrontPages.Add(entity);

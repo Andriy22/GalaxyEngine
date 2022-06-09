@@ -2,7 +2,7 @@
 using AutoMapper;
 using System;
 
-namespace Application.Queries.FrontPropValue
+namespace Application.Queries.FrontPropValue.GetFrontPropValueByComponent
 {
     public class GetFrontPropValueListDto : IMapWith<Domain.FrontPropValue>
     {

@@ -14,5 +14,6 @@ namespace Application.Interfaces
         public DbSet<FrontComponent> FrontComponents { get; set; }
         public DbSet<FrontPropValue> FrontPropValues { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        int SaveChanges();
     }
 }

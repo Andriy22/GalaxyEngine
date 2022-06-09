@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Models
+namespace Application.Models.FrontModels.DTOs
 {
     public class CreateFrontBaseComponentDto : IMapWith<CreateFrontBaseComponentCommand>
     {
@@ -16,7 +16,7 @@ namespace Application.Models
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateFrontBaseComponentDto, CreateFrontBaseComponentCommand>()
-                   .ForMember(option => option.Name, dest => dest.MapFrom(src => src.Name));
+                   .ForAllMembers(x => x.MapAtRuntime());
         }
     }
 }

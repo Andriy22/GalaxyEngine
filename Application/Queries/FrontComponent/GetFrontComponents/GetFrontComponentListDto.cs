@@ -1,5 +1,6 @@
 ﻿using Application.Common.Mappings;
 using Application.Queries.FrontPropValue;
+using Application.Queries.FrontPropValue.GetFrontPropValueByComponent;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
