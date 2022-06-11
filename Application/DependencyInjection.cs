@@ -1,5 +1,7 @@
 ﻿using Application.Common.Behaviors;
 using Application.Interfaces;
+using Application.Models.AccountModels.DTOs;
+using Application.Models.AccountModels.Validators;
 using Application.Services;
 using FluentValidation;
 using MediatR;
@@ -21,7 +23,13 @@ namespace Application
             services.AddTransient(typeof(IPipelineBehavior<,>),
                 typeof(LoggingBehavior<,>));
 
+
+            services.AddTransient<IValidator<RegistrationDto>, RegistrationDtoValidator>();
+
             services.AddScoped<IFrontendService, FrontendService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IJWTService, JWTService>();
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }

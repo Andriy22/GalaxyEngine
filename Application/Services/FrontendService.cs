@@ -1,14 +1,19 @@
 ﻿using Application.Commands.FrontBaseComponent.CreateCommand;
+using Application.Commands.FrontCategory.ChangeActiveStateCommand;
+using Application.Commands.FrontCategory.CreateCommand;
+using Application.Commands.FrontCategory.UpdateCommand;
 using Application.Commands.FrontComponent.CreateCommand;
 using Application.Commands.FrontComponentProp.CreateCommand;
 using Application.Commands.FrontPage.CreateCommand;
 using Application.Commands.FrontPropValue.CreateCommand;
 using Application.Commands.FrontPropValue.UpdateCommand;
+using Application.Common.Exceptions;
 using Application.Interfaces;
 using Application.Models;
 using Application.Models.FrontModels.DTOs;
 using Application.Models.FrontModels.VMs;
 using Application.Queries.FrontBaseComponent.GetFrontBaseComponents;
+using Application.Queries.FrontCategory.GetFrontCategories;
 using Application.Queries.FrontComponent.GetFrontComponents;
 using Application.Queries.FrontComponentProp;
 using Application.Queries.FrontPage.GetFrontPages;
@@ -48,10 +53,22 @@ namespace Application.Services
             return await _mediator.Send(command);
         }
 
+        public async Task<Unit> ChangeActiveSateCategory(ChangeActiveStateFrontCategoryCommand command)
+        {
+            await _mediator.Send(command);
+
+            return Unit.Value;
+        }
+
         public async Task<Guid> CreateBaseComponent(CreateFrontBaseComponentDto model)
         {
             var command = _mapper.Map<CreateFrontBaseComponentCommand>(model);
 
+            return await _mediator.Send(command);
+        }
+
+        public async Task<Guid> CreateCategory(CreateFrontCategoryCommand command)
+        {
             return await _mediator.Send(command);
         }
 
@@ -133,7 +150,10 @@ namespace Application.Services
             return result;
         }
 
-        
+        public async Task<FrontCategoryListVm> GetFrontCategories()
+        {
+            return await _mediator.Send(new GetFrontCategoryListQuery());
+        }
 
         public async Task<GetFrontComponentPropListVm> GetFrontComponentPropList(GetFrontComponentPropsDto model)
         {
@@ -147,11 +167,19 @@ namespace Application.Services
             return await _mediator.Send(new GetFrontPageListQuery());
         }
 
-        public async void UpdateValueToProp(UpdateFrontPropValueDto model)
+        public async Task<Unit> UpdateCategory(UpdateFrontCategoryCommand command)
+        {
+            await _mediator.Send(command);
+            return Unit.Value;
+        }
+
+        public async Task<Unit> UpdateValueToProp(UpdateFrontPropValueDto model)
         {
             var command = _mapper.Map<UpdateFrontPropValueCommand>(model);
 
             await _mediator.Send(command);
+
+            return Unit.Value;
         }
     }
 }

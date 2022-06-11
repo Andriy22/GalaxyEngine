@@ -15,7 +15,7 @@ namespace Application.Commands.FrontPropValue.UpdateCommand
         public UpdateFrontPropValueCommandHandler(IDBContext dbContext) =>
             _dbContext = dbContext;
 
-        public async Task<Unit> Handle(UpdateFrontPropValueCommand request,
+        public Task<Unit> Handle(UpdateFrontPropValueCommand request,
             CancellationToken cancellationToken)
         {
 
@@ -26,11 +26,11 @@ namespace Application.Commands.FrontPropValue.UpdateCommand
                 throw new NotFoundException("FrontPropValue", entity.Id);
             }
 
-             entity.Value = request.Value;
+            entity.Value = request.Value;
 
             _dbContext.SaveChanges();
 
-            return Unit.Value;
+            return Task.FromResult(Unit.Value);
         }
     }
 

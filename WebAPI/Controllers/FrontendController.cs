@@ -1,6 +1,11 @@
-﻿using Application.Interfaces;
+﻿using Application.Commands.FrontCategory.ChangeActiveStateCommand;
+using Application.Commands.FrontCategory.CreateCommand;
+using Application.Commands.FrontCategory.UpdateCommand;
+using Application.Commands.FrontGlobalSettings.UpdateCommand;
+using Application.Interfaces;
 using Application.Models;
 using Application.Models.FrontModels.DTOs;
+using Application.Queries.FrontGlobalSettings.GetFrontGlobalSettingsList;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -82,6 +87,45 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetComponentPropValues(GetFrontPropValuesDto model)
         {
             return Ok(await _frontendService.GetComponentPropValues(model));
+        }
+
+        [HttpPost("get-categories")]
+        public async Task<IActionResult> GetCategories()
+        {
+            return Ok(await _frontendService.GetFrontCategories());
+        }
+
+        [HttpPost("create-category")]
+        public async Task<IActionResult> CreateCategory(CreateFrontCategoryCommand command)
+        {
+            return Ok(await _frontendService.CreateCategory(command));
+        }
+
+        [HttpPost("update-category")]
+        public async Task<IActionResult> UpdateCategoryAsync(UpdateFrontCategoryCommand command)
+        {
+            await _frontendService.UpdateCategory(command);
+            return Ok();
+        }
+
+        [HttpPost("update-global-setting")]
+        public async Task<IActionResult> UpdateGlobalSetting(UpdateGlobalSettingCommand command)
+        {
+            await Mediator.Send(command);
+            return Ok();
+        }
+
+        [HttpPost("get-global-settings")]
+        public async Task<IActionResult> GetGlobalSettings()
+        {
+            return Ok(await Mediator.Send(new GetFrontGlobalSettingsListQuery()));
+        }
+
+        [HttpPost("change-active-state-category")]
+        public async Task<IActionResult> ChangeActiveStateCategoryAsync(ChangeActiveStateFrontCategoryCommand command)
+        {
+            await _frontendService.ChangeActiveSateCategory(command);
+            return Ok();
         }
     }
 }

@@ -15,7 +15,9 @@ namespace Domain
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Route { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsActive { get; set; }
+        public Guid CategoryId { get; set; }
+        public FrontCategory Category { get; set; }
         public List<FrontComponent> Components { get; set; }
     }
 }

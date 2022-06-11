@@ -1,6 +1,8 @@
 ﻿using Application.Interfaces;
 using Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Persistence.EntityTypeConfigurations;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,8 +10,12 @@ using System.Threading.Tasks;
 namespace Persistence
 {
 
-    public class DBContext : DbContext, IDBContext
+    public class DBContext : IdentityDbContext, IDBContext
     {
+        public new DbSet<User> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<FrontGlobalSetting> FrontGlobalSettings { get; set; }
+        public DbSet<FrontCategory> FrontCategories { get; set; }
         public DbSet<Demo> Demos { get; set; }
         public DbSet<FrontPage> FrontPages { get; set; }
         public DbSet<FrontBaseComponent> FrontBaseComponents { get; set; }
@@ -30,5 +36,11 @@ namespace Persistence
         {
             return base.SaveChangesAsync(cancellationToken);
         }
+
+        public override EntityEntry Entry(object entity)
+        {
+            return base.Entry(entity);
+        }
+
     }
 }

@@ -13,6 +13,7 @@ namespace Application.Models.FrontModels.DTOs
     {
         public string Title { get; set; }
         public bool CanBeHidden { get; set; }
+        public string Type { get; set; }
         public Guid BaseComponentId { get; set; }
 
         public void Mapping(Profile profile)

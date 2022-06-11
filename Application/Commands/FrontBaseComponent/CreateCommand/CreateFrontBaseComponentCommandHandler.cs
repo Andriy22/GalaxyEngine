@@ -22,7 +22,7 @@ namespace Application.Commands.FrontBaseComponent.CreateCommand
             if (_dbContext.FrontBaseComponents.FirstOrDefault(x => x.Name.ToLower() ==
                                                               request.Name.ToLower()) != null)
             {
-                throw new AlreadyExistsException(request.Name);
+                throw new AlreadyExistsException("FrontBaseComponent", request.Name);
             }
 
             var entity = new Domain.FrontBaseComponent

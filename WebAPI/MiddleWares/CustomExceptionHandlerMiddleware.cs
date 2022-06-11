@@ -38,6 +38,10 @@ namespace WebAPI.MiddleWares
                     code = HttpStatusCode.BadRequest;
                     result = JsonSerializer.Serialize(validationException.ValidationResult.ErrorMessage);
                     break;
+                case CustomHttpException customHttpException:
+                    code = customHttpException.StatusCode;
+                    result = JsonSerializer.Serialize(new { error = customHttpException.Message });
+                    break;
                 case NotFoundException:
                     code = HttpStatusCode.NotFound;
                     break;
@@ -55,7 +59,7 @@ namespace WebAPI.MiddleWares
                 result = JsonSerializer.Serialize(new { error = exception.Message });
             }
 
-            Log.Error(exception.StackTrace);
+           // Log.Error(exception.StackTrace);
 
             return context.Response.WriteAsync(result);
         }

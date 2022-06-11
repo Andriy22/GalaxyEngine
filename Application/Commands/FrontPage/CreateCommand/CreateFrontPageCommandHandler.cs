@@ -20,7 +20,7 @@ namespace Application.Commands.FrontPage.CreateCommand
         {
             if (_dbContext.FrontPages.FirstOrDefault(x => x.Name.ToLower() == request.Name.ToLower() || request.Route.ToLower() == x.Route.ToLower()) != null)
             {
-                throw new AlreadyExistsException(request.Name);
+                throw new AlreadyExistsException("FrontPage", request.Name);
             }
 
             var entity = new Domain.FrontPage
@@ -28,7 +28,6 @@ namespace Application.Commands.FrontPage.CreateCommand
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Route = request.Route,
-                IsDeleted = false,
             };
 
             _dbContext.FrontPages.Add(entity);

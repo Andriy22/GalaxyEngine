@@ -7,6 +7,7 @@ namespace Application.Commands.FrontComponentProp.CreateCommand
     {
         public string Title { get; set; }
         public bool CanBeHidden { get; set; }
+        public string Type { get; set; }
         public Guid BaseComponentId { get; set; }
     }
 }
