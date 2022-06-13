@@ -12,10 +12,10 @@ namespace Domain
         {
             PropValues = new List<FrontPropValue>();
         }
-        public Guid Id { get; set; }
-        public Guid BaseComponentId { get; set; }
+        public string Id { get; set; }
+        public string BaseComponentId { get; set; }
         public FrontBaseComponent BaseComponent { get; set; }
-        public Guid PageId { get; set; }
+        public string PageId { get; set; }
         public FrontPage Page { get; set; }
         public int DisplayIndex { get; set; }
         public bool IsDeleted { get; set; }

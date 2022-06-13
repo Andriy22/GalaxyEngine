@@ -2,6 +2,7 @@
 using Application.Commands.FrontCategory.CreateCommand;
 using Application.Commands.FrontCategory.UpdateCommand;
 using Application.Commands.FrontGlobalSettings.UpdateCommand;
+using Application.Commands.FrontPage.CreateCommand;
 using Application.Interfaces;
 using Application.Models;
 using Application.Models.FrontModels.DTOs;
@@ -23,7 +24,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("create-page")]
-        public async Task<IActionResult> CreatePage(CreateFrontPageDto model)
+        public async Task<IActionResult> CreatePage(CreateFrontPageCommand model)
         {
             return Ok(await _frontendService.CreatePage(model));
         }

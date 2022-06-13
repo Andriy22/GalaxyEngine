@@ -12,7 +12,7 @@ namespace Application.Commands.FrontComponentProp.CreateCommand
         public CreateFrontComponentPropCommandValidator()
         {
             RuleFor(c => c.Title).NotEmpty();
-            RuleFor(c => c.BaseComponentId).NotEqual(Guid.Empty);
+            RuleFor(c => c.BaseComponentId).NotEmpty();
         }
     }
 }

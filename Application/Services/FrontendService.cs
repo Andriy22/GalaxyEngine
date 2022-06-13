@@ -39,14 +39,14 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<Guid> AddPropToComponent(CreateFrontComponentPropDto model)
+        public async Task<string> AddPropToComponent(CreateFrontComponentPropDto model)
         {
             var command = _mapper.Map<CreateFrontComponentPropCommand>(model);
 
             return await _mediator.Send(command);
         }
 
-        public async Task<Guid> AddValueToProp(CreateFrontPropValueDto model)
+        public async Task<string> AddValueToProp(CreateFrontPropValueDto model)
         {
             var command = _mapper.Map<CreateFrontPropValueCommand>(model);
 
@@ -60,19 +60,19 @@ namespace Application.Services
             return Unit.Value;
         }
 
-        public async Task<Guid> CreateBaseComponent(CreateFrontBaseComponentDto model)
+        public async Task<string> CreateBaseComponent(CreateFrontBaseComponentDto model)
         {
             var command = _mapper.Map<CreateFrontBaseComponentCommand>(model);
 
             return await _mediator.Send(command);
         }
 
-        public async Task<Guid> CreateCategory(CreateFrontCategoryCommand command)
+        public async Task<string> CreateCategory(CreateFrontCategoryCommand command)
         {
             return await _mediator.Send(command);
         }
 
-        public async Task<Guid> CreateComponent(CreateFrontComponentDto model)
+        public async Task<string> CreateComponent(CreateFrontComponentDto model)
         {
             var command = _mapper.Map<CreateFrontComponentCommand>(model);
 
@@ -96,11 +96,9 @@ namespace Application.Services
             return entityId;
         }
 
-        public async Task<Guid> CreatePage(CreateFrontPageDto model)
+        public async Task<string> CreatePage(CreateFrontPageCommand model)
         {
-            var command = _mapper.Map<CreateFrontPageCommand>(model);
-
-            return await _mediator.Send(command);
+            return await _mediator.Send(model);
         }
 
         public async Task<FrontBaseComponentListVm> GetBaseComponents()

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.FrontCategory.CreateCommand
 {
-    public class CreateFrontCategoryCommand : IRequest<Guid>
+    public class CreateFrontCategoryCommand : IRequest<string>
     {
         public string Name { get; set; }
     }

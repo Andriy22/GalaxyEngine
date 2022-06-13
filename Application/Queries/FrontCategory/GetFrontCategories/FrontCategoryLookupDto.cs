@@ -10,7 +10,7 @@ namespace Application.Queries.FrontCategory.GetFrontCategories
 {
     public class FrontCategoryLookupDto : IMapWith<Domain.FrontCategory>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
 

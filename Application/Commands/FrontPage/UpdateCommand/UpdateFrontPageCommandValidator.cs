@@ -12,8 +12,8 @@ namespace Application.Commands.FrontPage.UpdateCommand
         public UpdateFrontPageCommandValidator()
         {
             RuleFor(x => x.Name).NotEmpty();
-            RuleFor(x => x.Id).NotEqual(Guid.Empty);
-            RuleFor(x => x.CategoryId).NotEqual(Guid.Empty);
+            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.CategoryId).NotEmpty();
             RuleFor(x => x.IsActive).NotNull();
         }
     }

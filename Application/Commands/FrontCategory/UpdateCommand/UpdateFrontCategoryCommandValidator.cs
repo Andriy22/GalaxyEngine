@@ -12,7 +12,7 @@ namespace Application.Commands.FrontCategory.UpdateCommand
         public UpdateFrontCategoryCommandValidator()
         {
             RuleFor(x => x.Name).NotEmpty();
-            RuleFor(x => x.Id).NotEqual(Guid.Empty);
+            RuleFor(x => x.Id).NotEmpty();
         }
     }
 }

@@ -9,8 +9,6 @@ namespace Application.Demo.Commands.CreateCommand
         {
             RuleFor(createCommand =>
                 createCommand.Title).NotEmpty().MaximumLength(250);
-            RuleFor(createCommand =>
-                createCommand.UserId).NotEqual(Guid.Empty);
         }
     }
 }

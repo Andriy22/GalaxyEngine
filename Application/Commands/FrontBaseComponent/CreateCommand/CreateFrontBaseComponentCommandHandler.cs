@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.FrontBaseComponent.CreateCommand
 {
-    public class CreateFrontBaseComponentCommandHandler : IRequestHandler<CreateFrontBaseComponentCommand, Guid>
+    public class CreateFrontBaseComponentCommandHandler : IRequestHandler<CreateFrontBaseComponentCommand, string>
     {
 
         private readonly IDBContext _dbContext;
@@ -16,7 +16,7 @@ namespace Application.Commands.FrontBaseComponent.CreateCommand
         public CreateFrontBaseComponentCommandHandler(IDBContext dbContext) =>
                 _dbContext = dbContext;
 
-        public async Task<Guid> Handle(CreateFrontBaseComponentCommand request,
+        public async Task<string> Handle(CreateFrontBaseComponentCommand request,
             CancellationToken cancellationToken)
         {
             if (_dbContext.FrontBaseComponents.FirstOrDefault(x => x.Name.ToLower() ==
@@ -27,7 +27,7 @@ namespace Application.Commands.FrontBaseComponent.CreateCommand
 
             var entity = new Domain.FrontBaseComponent
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = request.Name,
                 NormalizedName = request.Name.ToString()
             };

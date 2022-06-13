@@ -6,7 +6,7 @@ namespace Application.Demo.Queries.GetDemos
 {
     public class DemoLookupDto : IMapWith<Domain.Demo>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
 
         public void Mapping(Profile profile)

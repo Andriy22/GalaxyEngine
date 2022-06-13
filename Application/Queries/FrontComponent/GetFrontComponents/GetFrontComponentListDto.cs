@@ -9,7 +9,7 @@ namespace Application.Queries.FrontComponent.GetFrontComponents
 {
     public class GetFrontComponentListDto : IMapWith<Domain.FrontComponent>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public int DisplayIndex { get; set; }
         public bool IsActive { get; set; }

@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
         {
             var command = _mapper.Map<CreateDemoCommand>(model);
 
-            command.UserId = Guid.NewGuid();
+            command.UserId = Guid.NewGuid().ToString();
 
             return Ok(await Mediator.Send(command));
         }
@@ -38,7 +38,7 @@ namespace WebAPI.Controllers
         {
             var query = new GetDemoListQuery()
             {
-                UserID = Guid.NewGuid()
+                UserID = Guid.NewGuid().ToString()
             };
 
             return Ok(await Mediator.Send(query));

@@ -9,7 +9,7 @@ namespace Application.Commands.FrontCategory.UpdateCommand
 {
     public class UpdateFrontCategoryCommand : IRequest<Unit>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

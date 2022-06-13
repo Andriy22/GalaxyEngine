@@ -3,10 +3,10 @@ using System;
 
 namespace Application.Commands.FrontPropValue.CreateCommand
 {
-    public class CreateFrontPropValueCommand : IRequest<Guid>
+    public class CreateFrontPropValueCommand : IRequest<string>
     {
-        public Guid ComponentId { get; set; }
-        public Guid PropId { get; set; }
+        public string ComponentId { get; set; }
+        public string PropId { get; set; }
         public string Value { get; set; }
     }
 }

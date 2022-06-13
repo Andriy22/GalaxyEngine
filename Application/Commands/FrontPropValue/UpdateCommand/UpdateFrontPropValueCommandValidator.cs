@@ -11,7 +11,7 @@ namespace Application.Commands.FrontPropValue.UpdateCommand
     {
         public UpdateFrontPropValueCommandValidator()
         {
-            RuleFor(c => c.PropValueID).NotEqual(Guid.Empty);
+            RuleFor(c => c.PropValueID).NotEmpty();
             RuleFor(c => c.Value).NotEmpty();
         }
     }

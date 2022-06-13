@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.FrontPropValue.CreateCommand
 {
-    internal class CreateFrontPropValueCommandHandler : IRequestHandler<CreateFrontPropValueCommand, Guid>
+    internal class CreateFrontPropValueCommandHandler : IRequestHandler<CreateFrontPropValueCommand, string>
     {
         private readonly IDBContext _dbContext;
 
         public CreateFrontPropValueCommandHandler(IDBContext dbContext) =>
             _dbContext = dbContext;
 
-        public async Task<Guid> Handle(CreateFrontPropValueCommand request,
+        public async Task<string> Handle(CreateFrontPropValueCommand request,
             CancellationToken cancellationToken)
         {
 

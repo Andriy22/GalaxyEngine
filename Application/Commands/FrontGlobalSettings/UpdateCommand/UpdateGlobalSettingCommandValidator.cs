@@ -11,7 +11,7 @@ namespace Application.Commands.FrontGlobalSettings.UpdateCommand
     {
         public UpdateGlobalSettingCommandValidator()
         {
-            RuleFor(x => x.Id).NotEqual(Guid.Empty);
+            RuleFor(x => x.Id).NotEmpty();
             RuleFor(x => x.Value).NotEmpty();
         }
     }

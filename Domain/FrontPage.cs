@@ -12,11 +12,11 @@ namespace Domain
         {
             Components = new List<FrontComponent>();
         }
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Route { get; set; }
         public bool IsActive { get; set; }
-        public Guid CategoryId { get; set; }
+        public string CategoryId { get; set; }
         public FrontCategory Category { get; set; }
         public List<FrontComponent> Components { get; set; }
     }

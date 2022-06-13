@@ -1,6 +1,7 @@
 ﻿using Application.Commands.FrontCategory.ChangeActiveStateCommand;
 using Application.Commands.FrontCategory.CreateCommand;
 using Application.Commands.FrontCategory.UpdateCommand;
+using Application.Commands.FrontPage.CreateCommand;
 using Application.Models;
 using Application.Models.FrontModels.DTOs;
 using Application.Models.FrontModels.VMs;
@@ -31,18 +32,18 @@ namespace Application.Interfaces
         public Task<FrontCategoryListVm> GetFrontCategories();
 
         //commands
-        public Task<Guid> CreatePage(CreateFrontPageDto model);
+        public Task<string> CreatePage(CreateFrontPageCommand model);
 
-        public Task<Guid> CreateBaseComponent(CreateFrontBaseComponentDto model);
+        public Task<string> CreateBaseComponent(CreateFrontBaseComponentDto model);
 
-        public Task<Guid> AddPropToComponent(CreateFrontComponentPropDto model);
+        public Task<string> AddPropToComponent(CreateFrontComponentPropDto model);
 
-        public Task<Guid> CreateComponent(CreateFrontComponentDto model);
+        public Task<string> CreateComponent(CreateFrontComponentDto model);
 
-        public Task<Guid> AddValueToProp(CreateFrontPropValueDto model);
+        public Task<string> AddValueToProp(CreateFrontPropValueDto model);
         public Task<Unit> UpdateValueToProp(UpdateFrontPropValueDto model);
 
-        public Task<Guid> CreateCategory(CreateFrontCategoryCommand command);
+        public Task<string> CreateCategory(CreateFrontCategoryCommand command);
         public Task<Unit> UpdateCategory(UpdateFrontCategoryCommand command);
         public Task<Unit> ChangeActiveSateCategory(ChangeActiveStateFrontCategoryCommand command);
     }

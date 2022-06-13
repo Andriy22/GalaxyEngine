@@ -11,9 +11,9 @@ namespace Application.Commands.FrontComponent.CreateCommand
     {
         public CreateFrontComponentCommandValidator()
         {
-            RuleFor(c => c.BaseComponentId).NotEqual(Guid.Empty);
+            RuleFor(c => c.BaseComponentId).NotEmpty();
             RuleFor(c => c.DispayIndex).NotNull();
-            RuleFor(c => c.PageId).NotEqual(Guid.Empty);
+            RuleFor(c => c.PageId).NotEmpty();
         }
     }
 }

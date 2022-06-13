@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.FrontComponent.CreateCommand
 {
-    internal class CreateFrontComponentCommandHandler : IRequestHandler<CreateFrontComponentCommand, Guid>
+    internal class CreateFrontComponentCommandHandler : IRequestHandler<CreateFrontComponentCommand, string>
     {
         private readonly IDBContext _dbContext;
 
         public CreateFrontComponentCommandHandler(IDBContext dbContext) =>
             _dbContext = dbContext;
 
-        public async Task<Guid> Handle(CreateFrontComponentCommand request,
+        public async Task<string> Handle(CreateFrontComponentCommand request,
             CancellationToken cancellationToken)
         {
             var entity = new Domain.FrontComponent
             {
                 BaseComponentId = request.BaseComponentId,
                 PageId = request.PageId,
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 DisplayIndex = request.DispayIndex
             };
 

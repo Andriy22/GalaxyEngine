@@ -7,7 +7,7 @@ namespace Application.Demo.Queries.GetDemos
     {
         public GetNoteListQueryValidator()
         {
-            RuleFor(x => x.UserID).NotEqual(Guid.Empty);
+            RuleFor(x => x.UserID).NotEmpty();
         }
     }
 }

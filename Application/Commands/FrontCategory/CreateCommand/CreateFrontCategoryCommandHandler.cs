@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.FrontCategory.CreateCommand
 {
-    public class CreateFrontCategoryCommandHandler : IRequestHandler<CreateFrontCategoryCommand, Guid>
+    public class CreateFrontCategoryCommandHandler : IRequestHandler<CreateFrontCategoryCommand, string>
     {
         private readonly IDBContext _dbContext;
 
         public CreateFrontCategoryCommandHandler(IDBContext dbContext) =>
             _dbContext = dbContext;
 
-        public async Task<Guid> Handle(CreateFrontCategoryCommand request,
+        public async Task<string> Handle(CreateFrontCategoryCommand request,
                                        CancellationToken cancellationToken)
         {
             var category =_dbContext.FrontCategories.FirstOrDefault(
@@ -30,7 +30,7 @@ namespace Application.Commands.FrontCategory.CreateCommand
 
             var entity = new Domain.FrontCategory
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = request.Name,
                 IsDeleted = false,
                 IsActive = true,

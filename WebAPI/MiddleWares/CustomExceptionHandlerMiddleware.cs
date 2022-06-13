@@ -59,7 +59,7 @@ namespace WebAPI.MiddleWares
                 result = JsonSerializer.Serialize(new { error = exception.Message });
             }
 
-           // Log.Error(exception.StackTrace);
+           Log.Error(exception.StackTrace);
 
             return context.Response.WriteAsync(result);
         }

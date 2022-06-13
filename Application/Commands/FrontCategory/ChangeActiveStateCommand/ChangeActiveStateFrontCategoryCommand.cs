@@ -9,7 +9,7 @@ namespace Application.Commands.FrontCategory.ChangeActiveStateCommand
 {
     public class ChangeActiveStateFrontCategoryCommand : IRequest<Unit>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public bool IsActive { get; set; }
     }
 }

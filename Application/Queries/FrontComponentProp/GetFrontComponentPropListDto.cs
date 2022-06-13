@@ -6,7 +6,7 @@ namespace Application.Queries.FrontComponentProp
 {
     public class GetFrontComponentPropListDto : IMapWith<Domain.FrontComponentProp>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
 
         public void Mapping(Profile profile)

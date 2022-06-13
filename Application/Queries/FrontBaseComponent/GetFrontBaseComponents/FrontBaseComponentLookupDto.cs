@@ -6,7 +6,7 @@ namespace Application.Queries.FrontBaseComponent.GetFrontBaseComponents
 {
     public class FrontBaseComponentLookupDto : IMapWith<Domain.FrontBaseComponent>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
 
         public void Mapping(Profile profile)

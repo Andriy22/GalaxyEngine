@@ -9,7 +9,7 @@ namespace Application.Commands.FrontGlobalSettings.UpdateCommand
 {
     public class UpdateGlobalSettingCommand : IRequest<Unit>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Value { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace Application.Queries.FrontPage.GetFrontPages
 {
     public class GetFrontPageLookupDto : IMapWith<Domain.FrontPage>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Route { get; set; }
 

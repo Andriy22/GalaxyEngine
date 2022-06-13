@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace Application.Demo.Commands.CreateCommand
 {
     public class CreateDemoCommandHandler
-          : IRequestHandler<CreateDemoCommand, Guid>
+          : IRequestHandler<CreateDemoCommand, string>
     {
         private readonly IDBContext _dbContext;
 
         public CreateDemoCommandHandler(IDBContext dbContext) =>
             _dbContext = dbContext;
 
-        public async Task<Guid> Handle(CreateDemoCommand request,
+        public async Task<string> Handle(CreateDemoCommand request,
             CancellationToken cancellationToken)
         {
 
             var demo = new Domain.Demo
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Title = request.Title,
             };
 

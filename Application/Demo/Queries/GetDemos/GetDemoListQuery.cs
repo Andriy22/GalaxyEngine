@@ -5,6 +5,6 @@ namespace Application.Demo.Queries.GetDemos
 {
     public class GetDemoListQuery : IRequest<DemoListVM>
     {
-        public Guid UserID { get; set; }
+        public string UserID { get; set; }
     }
 }

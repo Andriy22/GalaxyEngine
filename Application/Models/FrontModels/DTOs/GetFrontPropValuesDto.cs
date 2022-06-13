@@ -11,7 +11,7 @@ namespace Application.Models.FrontModels.DTOs
 {
     public class GetFrontPropValuesDto : IMapWith<GetFrontPropValuesByComponentQuery>
     {
-        public Guid ComponentId { get; set; }
+        public string ComponentId { get; set; }
 
         public void Mapping(Profile profile)
         {

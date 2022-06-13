@@ -11,7 +11,7 @@ namespace Application.Commands.FrontCategory.ChangeActiveStateCommand
     {
         public ChangeActiveStateFrontCategoryCommandValidator()
         {
-            RuleFor(c => c.Id).NotEqual(Guid.Empty);
+            RuleFor(c => c.Id).NotEmpty();
             RuleFor(c => c.IsActive).NotNull();
         }
     }

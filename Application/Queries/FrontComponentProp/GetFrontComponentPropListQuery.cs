@@ -5,6 +5,6 @@ namespace Application.Queries.FrontComponentProp
 {
     public class GetFrontComponentPropListQuery : IRequest<GetFrontComponentPropListVm>
     {
-        public Guid BaseComponentId { get; set; }
+        public string BaseComponentId { get; set; }
     }
 }

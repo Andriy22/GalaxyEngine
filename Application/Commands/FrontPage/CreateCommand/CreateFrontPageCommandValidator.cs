@@ -12,6 +12,7 @@ namespace Application.Commands.FrontPage.CreateCommand
         public CreateFrontPageCommandValidator()
         {
             RuleFor(c => c.Name).NotEmpty();
+            RuleFor(c => c.CategoryId).NotEmpty();
         }
     }
 }
